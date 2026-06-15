@@ -47,7 +47,7 @@ public class Hitbox : MonoBehaviour
                 {
                     Debug.Log("<color=red>ĐÒN XUYÊN GIÁP!</color> Zeus bẻ gãy hoàn toàn phòng thủ của đối phương!");
                     victimPart.TakePartDamage(currentDamage);
-                    victimController.TriggerKnockback(Vector2.right * 15f); // Đẩy lùi mạnh 
+                    victimController.TriggerKnockback(Vector2.right * 15f); // Đẩy lùi mạnh (Sẽ code ở Bước 3)
                     DeactivateHitbox();
                     return;
                 }
@@ -66,13 +66,15 @@ public class Hitbox : MonoBehaviour
             }
 
             RobotController attackerController = owner.GetComponent<RobotController>();
-            if (attackerController != null && attackerController.forceCriticalPartBreak)
+            if (attackerController != null && attackerController.isNextHitCriticalHeadCrack)
             {
+                // Nếu trúng vào bộ phận Đầu của đối thủ
                 if (victimPart.bodyPartType == RobotData.PartType.Head)
                 {
-                    victimPart.currentPartHP = 0;
+                    victimPart.currentPartHP = 0; 
+                    Debug.Log("<color=red>BÚA TẠ PHÁ HỦY HOÀN TOÀN VÙNG ĐẦU ĐỐI THỦ!</color>");
                 }
-                attackerController.forceCriticalPartBreak = false; 
+                attackerController.isNextHitCriticalHeadCrack = false; 
             }
 
             victimPart.TakePartDamage(currentDamage);
