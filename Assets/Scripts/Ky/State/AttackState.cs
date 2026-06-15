@@ -12,7 +12,7 @@ public class AttackState : RobotState
     private float activeTime;
     private bool hitboxActivated = false;
     private bool hitboxDeactivated = false;
-    public bool canCancel { get; private set; }
+
     public AttackState(RobotController robot, string animName, float duration, float energyCost, float damage) : base(robot)
     {
         this.attackAnimName = animName;
@@ -33,7 +33,6 @@ public class AttackState : RobotState
 
         hitboxActivated = false;
         hitboxDeactivated = false;
-        canCancel = false;
 
         Debug.Log($"Tung đòn: {attackAnimName} | Tốn {energyCost}% PIN");
         // Chèn sau: robot.animator.Play(attackAnimName);
@@ -44,31 +43,27 @@ public class AttackState : RobotState
         timer -= Time.deltaTime;
         float elapsedTime = attackDuration - timer;
 
-        // Giai đoạn Active: Bật Hitbox
+        // 1. Giai đoạn Active: Bật Hitbox khi hết thời gian Startup
         if (elapsedTime >= startupTime && !hitboxActivated)
         {
             hitboxActivated = true;
             robot.ActivateWeaponHitbox(damage, false, attackAnimName);
         }
 
-        // --- CƠ CHẾ CANCEL: Bật cờ cho phép Hủy đòn ngay khi vừa chạm giai đoạn Active ---
-        if (elapsedTime >= startupTime)
-        {
-            canCancel = true;
-        }
-
-        // Giai đoạn Recovery: Tắt Hitbox
+        // 2. Giai đoạn Recovery: Tắt Hitbox khi hết thời gian Active
         if (elapsedTime >= activeTime && !hitboxDeactivated)
         {
             hitboxDeactivated = true;
             robot.DeactivateWeaponHitbox();
         }
 
-        // Kết thúc đòn đánh
+        // 3. Kết thúc đòn đánh
         if (timer <= 0f)
         {
-            if (robot.isCrouching) robot.TransitionToState(robot.crouchState);
-            else robot.TransitionToState(robot.idleState);
+            if (robot.isCrouching)
+                robot.TransitionToState(robot.crouchState);
+            else
+                robot.TransitionToState(robot.idleState);
         }
     }
 
