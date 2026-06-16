@@ -5,6 +5,8 @@ using UnityEngine.InputSystem.LowLevel;
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class RobotController : MonoBehaviour
 {
+    private PlayerInput playerInput;
+
     [Header("Robot Data")]
     public RobotData robotDataTemplate;
 
@@ -58,8 +60,10 @@ public class RobotController : MonoBehaviour
 
     void Start()
     {
+        playerInput = GetComponentInParent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = true; 
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //rb.isKinematic = true; 
         groundCollider = GetComponent<BoxCollider2D>();
 
         if (robotDataTemplate != null)
@@ -88,9 +92,15 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
+        /*fixed 
         moveInput = Input.GetAxisRaw("Horizontal");
         isCrouching = Input.GetKey(KeyCode.S);
         isBlocking = Input.GetKey(KeyCode.L);
+       */
+        /* Lấy input từ PlayerInput*/
+        moveInput = playerInput.MoveInput;
+        isCrouching = playerInput.IsCrouching;
+        isBlocking = playerInput.IsBlocking;
 
         ManageEnergySystem();
 
@@ -197,6 +207,7 @@ public class RobotController : MonoBehaviour
             Vector2 snapPosition = rb.position;
             snapPosition.y += (hit.point.y - origin.y);
             rb.position = snapPosition;
+            Debug.Log("Grounded! Snapping to surface at: " + hit.point);
         }
     }
 

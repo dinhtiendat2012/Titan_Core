@@ -590,6 +590,7 @@ MonoBehaviour:
   currentMoveSpeed: 0
   currentAttackDamage: 0
   isParryActive: 0
+  isNextHitCriticalHeadCrack: 0
   moveSpeed: 5
   customGravity: -20
   maxEnergy: 100
@@ -599,6 +600,7 @@ MonoBehaviour:
   overheatDuration: 2.5
   currentStateName: 
   rightFistHitbox: {fileID: 873311944}
+  isIronWallInvulnerable: 0
   velocity: {x: 0, y: 0}
 --- !u!1 &428326402
 GameObject:
@@ -652,7 +654,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.0018178225}
+  m_Offset: {x: 0, y: -0.47245103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -662,7 +664,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.0471213}
+  m_Size: {x: 1, y: 0.09858355}
   m_EdgeRadius: 0
 --- !u!212 &428326404
 SpriteRenderer:
@@ -728,8 +730,8 @@ Transform:
   m_GameObject: {fileID: 428326402}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0032, y: -2.64, z: 0}
-  m_LocalScale: {x: 10, y: 0.5, z: 1}
+  m_LocalPosition: {x: -0.0307, y: -0.1675, z: 10}
+  m_LocalScale: {x: 9.945, y: 5.44505, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1204,10 +1206,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16579771
-    y: 0.029325513
-    width: 0.66736186
-    height: 0.9384164
+    x: 0.02238806
+    y: 0.1487965
+    width: 0.9552239
+    height: 0.7002188
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
