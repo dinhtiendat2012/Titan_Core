@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2867246696796038821}
   - component: {fileID: 7087575201247136086}
   - component: {fileID: 9079299405842838111}
+  - component: {fileID: 7149740898117614173}
   m_Layer: 0
   m_Name: 'TWIN CITIES '
   m_TagString: Untagged
@@ -162,3 +163,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7149740898117614173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351191740185433010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80975f571c5ebca4d861e56a27d1d90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  robotDataTemplate: {fileID: 11400000, guid: 56854781f66ac9c4babba6b2d0044a6f, type: 2}
+  currentGlobalHP: 0
+  currentMoveSpeed: 0
+  currentAttackDamage: 0
+  isParryActive: 0
+  isNextHitCriticalHeadCrack: 0
+  moveSpeed: 5
+  customGravity: -20
+  maxEnergy: 100
+  currentEnergy: 0
+  energyRegenRate: 15
+  isOverheated: 0
+  overheatDuration: 2.5
+  currentStateName: 
+  rightFistHitbox: {fileID: 0}
+  isIronWallInvulnerable: 0
+  velocity: {x: 0, y: 0}

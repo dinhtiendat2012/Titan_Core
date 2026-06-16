@@ -12,15 +12,19 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Transform spawnP2;
     private GameObject player1;
     private GameObject player2;
-
-    private void Start()
+    private void Awake()
     {
         SpawnPlayers();
+    }
+    private void Start()
+    {
+        
         
         CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
         if (player1 != null && player2 != null)
         {
             cameraFollow.SetTargets(player1.transform, player2.transform);
+
         }
         
     }
@@ -33,13 +37,15 @@ public class BattleManager : MonoBehaviour
         player1 = Instantiate(
             prefab1,
             spawnP1.position,
-            spawnP1.rotation
+            spawnP1.rotation,
+            spawnP1
         );
 
         player2 = Instantiate(
             prefab2,
             spawnP2.position,
-            spawnP2.rotation
+            spawnP2.rotation,
+            spawnP2
         );
     }
 }
