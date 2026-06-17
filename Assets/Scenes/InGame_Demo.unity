@@ -163,10 +163,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c032a37615306419870d9b8c3d7747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftKey: 97
-  rightKey: 100
-  crouchKey: 115
-  blockKey: 108
+  keyLeft: 97
+  keyRight: 100
+  keyCrouch: 115
+  keyLightPunch: 104
+  keyMediumPunch: 106
+  keyHeavyPunch: 107
+  keyBlock: 108
+  keySpecial: 112
 --- !u!1 &486924960
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,10 +443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c032a37615306419870d9b8c3d7747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftKey: 276
-  rightKey: 275
-  crouchKey: 274
-  blockKey: 273
+  keyLeft: 276
+  keyRight: 275
+  keyCrouch: 274
+  keyLightPunch: 257
+  keyMediumPunch: 258
+  keyHeavyPunch: 259
+  keyBlock: 260
+  keySpecial: 256
 --- !u!1 &1503048512
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,14 +482,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefabs:
   - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
-  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   spawnP1: {fileID: 107970796}
   spawnP2: {fileID: 1188042102}
+  p1HUD: {fileID: 0}
+  p2HUD: {fileID: 0}
 --- !u!4 &1503048514
 Transform:
   m_ObjectHideFlags: 0

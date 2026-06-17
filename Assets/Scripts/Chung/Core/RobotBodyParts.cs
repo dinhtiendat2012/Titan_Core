@@ -36,26 +36,23 @@ public class RobotBodyPart : MonoBehaviour
 
     public void TakePartDamage(float damageAmount)
     {
-        if (rootController != null && rootController.isIronWallInvulnerable)
+        if (currentPartHP <= 0) return;
+
+        // Kiểm tra cờ hiệu Phản đòn (thay cho isParryActive)
+        if (rootController != null && rootController.canParryNextHit)
         {
-            currentPartHP -= damageAmount;
-            currentPartHP = Mathf.Clamp(currentPartHP, 0, maxPartHP);
-            if (rootController != null) rootController.TakeGlobalDamage(damageAmount);
+            rootController.currentEnergy = rootController.maxEnergy;
+            rootController.TriggerParryReward();
             return;
         }
 
-        if (currentPartHP <= 0) return;
-
-        // --- CƠ CHẾ ĐẶC THÙ: PARRY / PHẢN ĐÒN SHADOW MODE ---
-        if (rootController != null && rootController.isParryActive)
+        // Kiểm tra cờ hiệu Miễn nhiễm linh kiện (thay cho isIronWallInvulnerable)
+        if (rootController != null && rootController.isPartImmune)
         {
-            Debug.Log($"<color=cyan>PARRY THÀNH CÔNG!</color> ATOM hóa giải hoàn toàn {damageAmount} DMG!");
-
-            // Phần thưởng 1: Hồi lại 100% thanh năng lượng (Pin)
-            rootController.currentEnergy = rootController.maxEnergy;
-
-            // Phần thưởng 2: Tăng 20% tốc độ ra đòn tiếp theo (bằng cách giảm thời gian cooldown đòn đánh)
-            rootController.TriggerParryReward();
+            // Vẫn trừ máu tổng và máu vùng, nhưng KHÔNG gọi hàm cập nhật Sprite hỏng hóc!
+            currentPartHP -= damageAmount;
+            currentPartHP = Mathf.Clamp(currentPartHP, 0, maxPartHP);
+            rootController.TakeGlobalDamage(damageAmount);
             return;
         }
 

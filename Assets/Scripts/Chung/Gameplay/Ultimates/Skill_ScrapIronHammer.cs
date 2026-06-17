@@ -14,7 +14,7 @@ public class Skill_ScrapIronHammer : SpecialSkill
 
         if (Random.value <= 0.30f)
         {
-            robot.isNextHitCriticalHeadCrack = true;
+            robot.forceCriticalPartBreak = true;
             Debug.Log("METRO: Cú bổ búa đã kích hoạt thuộc tính HỦY DIỆT VÙNG ĐẦU!");
         }
     }
