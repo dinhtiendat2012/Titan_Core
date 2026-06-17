@@ -4,20 +4,19 @@ using TMPro;
 
 public class CharacterSelectUI : MonoBehaviour
 {
-    [SerializeField] private Image selectedRobotImage;
     [SerializeField] private TMP_Text selectedRobotName;
 
-    private string selectedRobot;
+    private RobotData selectedRobot;
 
-    public void SelectAtom()
+    public void SelectRobot(RobotData robot)
     {
-        selectedRobot = "ATOM";
-        selectedRobotName.text = selectedRobot;
+        selectedRobot = robot;
+
+        selectedRobotName.text = robot.robotName;
     }
 
-    public void SelectZeus()
+    public RobotData GetSelectedRobot()
     {
-        selectedRobot = "ZEUS";
-        selectedRobotName.text = selectedRobot;
+        return selectedRobot;
     }
 }

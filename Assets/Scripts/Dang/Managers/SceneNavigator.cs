@@ -9,6 +9,11 @@ public class SceneNavigator : MonoBehaviour
         SceneManager.LoadScene("Dang_CharacterSelectScene");
     }
 
+    public void GoToMapSelect()
+    {
+        Debug.Log("Going to Map Select Scene");
+    }
+
     public void GoToBattle()
     {
         Debug.Log("Going to Battle Scene");
