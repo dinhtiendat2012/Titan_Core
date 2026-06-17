@@ -66,15 +66,13 @@ public class Hitbox : MonoBehaviour
             }
 
             RobotController attackerController = owner.GetComponent<RobotController>();
-            if (attackerController != null && attackerController.isNextHitCriticalHeadCrack)
+            if (attackerController != null && attackerController.forceCriticalPartBreak)
             {
-                // Nếu trúng vào bộ phận Đầu của đối thủ
                 if (victimPart.bodyPartType == RobotData.PartType.Head)
                 {
-                    victimPart.currentPartHP = 0; 
-                    Debug.Log("<color=red>BÚA TẠ PHÁ HỦY HOÀN TOÀN VÙNG ĐẦU ĐỐI THỦ!</color>");
+                    victimPart.currentPartHP = 0;
                 }
-                attackerController.isNextHitCriticalHeadCrack = false; 
+                attackerController.forceCriticalPartBreak = false; // Reset cờ
             }
 
             victimPart.TakePartDamage(currentDamage);

@@ -7,7 +7,7 @@ public class Skill_IronWall : SpecialSkill
     {
         robot.ConsumeEnergy(energyCost);
 
-        robot.TriggerIronWallShield(3.0f);
+        robot.GrantPartImmunity(3.0f);
 
         robot.TransitionToState(robot.idleState);
     }
