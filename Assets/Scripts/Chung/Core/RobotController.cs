@@ -5,7 +5,7 @@ using UnityEngine.InputSystem.LowLevel;
 [RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
 public class RobotController : MonoBehaviour
 {
-    private IRobotInput inputHandler;
+    private PlayerInput playerInput;
 
     [Header("Robot Data")]
     public RobotData robotDataTemplate;
@@ -36,11 +36,9 @@ public class RobotController : MonoBehaviour
     [Header("Combat References")]
     public Hitbox rightFistHitbox;
 
-    [Header("Combat Status Flags (Generic Buffs/Debuffs)")]
-    [HideInInspector] public bool canParryNextHit = false;
-    [HideInInspector] public bool forceCriticalPartBreak = false;
-    [HideInInspector] public bool isPartImmune = false;
-    private float partImmunityTimer = 0f;
+    [Header("Ambush Special Buff")]
+    public bool isIronWallInvulnerable = false;
+    private float shieldTimer = 0f;
 
     public Rigidbody2D rb { get; private set; }
     public BoxCollider2D groundCollider { get; private set; }
@@ -62,11 +60,7 @@ public class RobotController : MonoBehaviour
 
     void Start()
     {
-        inputHandler = GetComponent<IRobotInput>();
-        if (inputHandler == null)
-        {
-            Debug.LogError(gameObject.name + " KHÔNG TÌM THẤY BỘ ĐIỀU KHIỂN!");
-        }
+        playerInput = GetComponentInParent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         //rb.isKinematic = true; 
@@ -98,14 +92,17 @@ public class RobotController : MonoBehaviour
 
     void Update()
     {
-        if (inputHandler == null) return;
-
-        moveInput = inputHandler.MoveInput;
-        isCrouching = inputHandler.IsCrouching;
-        isBlocking = inputHandler.IsBlocking;
+        /*fixed 
+        moveInput = Input.GetAxisRaw("Horizontal");
+        isCrouching = Input.GetKey(KeyCode.S);
+        isBlocking = Input.GetKey(KeyCode.L);
+       */
+        /* Lấy input từ PlayerInput*/
+        moveInput = playerInput.MoveInput;
+        isCrouching = playerInput.IsCrouching;
+        isBlocking = playerInput.IsBlocking;
 
         ManageEnergySystem();
-        ManageStatusEffects();
 
         if (currentState != null) currentState.LogicUpdate();
 
@@ -114,28 +111,29 @@ public class RobotController : MonoBehaviour
             HandleAttacks();
         }
 
-        bool isAttackCancelable = false;
-        if (currentState is AttackState currentAttack)
+        if (Input.GetKeyDown(KeyCode.P) && !isOverheated && currentStateName != "AttackState")
         {
-            isAttackCancelable = currentAttack.canCancel;
+            if (robotDataTemplate != null && robotDataTemplate.uniqueSkill != null)
+            {
+    
+                if (currentEnergy >= robotDataTemplate.uniqueSkill.energyCost)
+                {
+                    robotDataTemplate.uniqueSkill.Activate(this);
+                }
+                else
+                {
+                    Debug.Log("Không đủ năng lượng PIN để kích hoạt tuyệt chiêu!");
+                }
+            }
         }
 
-        if (inputHandler.SpecialDown && !isOverheated)
+        if (isIronWallInvulnerable)
         {
-            if (currentStateName != "AttackState" || isAttackCancelable)
+            shieldTimer -= Time.deltaTime;
+            if (shieldTimer <= 0f)
             {
-                if (robotDataTemplate != null && robotDataTemplate.uniqueSkill != null)
-                {
-                    if (currentEnergy >= robotDataTemplate.uniqueSkill.energyCost)
-                    {
-                        Debug.Log("<color=cyan>CANCEL COMBO KÍCH HOẠT!</color> Hủy đòn thường nối Tuyệt chiêu!");
-                        robotDataTemplate.uniqueSkill.Activate(this);
-                    }
-                    else
-                    {
-                        Debug.Log("Không đủ năng lượng PIN để Cancel nối Tuyệt chiêu!");
-                    }
-                }
+                isIronWallInvulnerable = false;
+                Debug.Log("Khiên sắt của Ambush đã hết tác dụng.");
             }
         }
     }
@@ -295,17 +293,17 @@ public class RobotController : MonoBehaviour
     {
         float baseDmg = robotDataTemplate != null ? currentAttackDamage : 35f;
 
-        if (inputHandler.LightPunchDown)
+        if (Input.GetKeyDown(KeyCode.H))
         {
             AttackState lightPunch = new AttackState(this, "LightPunch", 0.25f, 8f, baseDmg);
             TransitionToState(lightPunch);
         }
-        else if (inputHandler.MediumPunchDown)
+        else if (Input.GetKeyDown(KeyCode.J))
         {
             AttackState mediumPunch = new AttackState(this, "MediumPunch", 0.3f, 12f, baseDmg);
             TransitionToState(mediumPunch);
         }
-        else if (inputHandler.HeavyPunchDown)
+        else if (Input.GetKeyDown(KeyCode.K))
         {
             AttackState heavyPunch = new AttackState(this, "HeavyPunch", 0.5f, 16f, baseDmg * 1.5f);
             TransitionToState(heavyPunch);
@@ -359,25 +357,10 @@ public class RobotController : MonoBehaviour
         Debug.Log(gameObject.name + " BỊ ĐẨY VĂNG RA XA!");
     }
 
-    // --- HÀM QUẢN LÝ BỘ ĐẾM THỜI GIAN BUFF CHUNG ---
-    private void ManageStatusEffects()
+    public void TriggerIronWallShield(float duration)
     {
-        if (isPartImmune)
-        {
-            partImmunityTimer -= Time.deltaTime;
-            if (partImmunityTimer <= 0f)
-            {
-                isPartImmune = false;
-                Debug.Log(gameObject.name + " đã hết hiệu lực Miễn nhiễm linh kiện!");
-            }
-        }
-        // Sau này có hiệu ứng nào cần đếm thời gian, bạn chỉ cần ném vào đây
-    }
-
-    // --- HÀM CẤP BUFF ---
-    public void GrantPartImmunity(float duration)
-    {
-        isPartImmune = true;
-        partImmunityTimer = duration;
+        isIronWallInvulnerable = true;
+        shieldTimer = duration;
+        Debug.Log("<color=green>AMBUSH BẬT KHIÊN SATÊN:</color> Miễn nhiễm hỏng hóc linh kiện trong 3s!");
     }
 }
