@@ -17,7 +17,7 @@ public class BlockState : RobotState
         else
         {
             Debug.Log("Trạng thái: Đỡ đòn cao (High Block)");
-            // Kích hoạt Anim High Block
+            robot.animator?.Play("Block"); // Kích hoạt Anim Block 
         }
     }
 
