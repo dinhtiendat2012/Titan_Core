@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c8dce0415cb4dae4c9ca7a16c32bad57
+guid: 7db573e05f6ca114da898ba916ef47b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2340988923651444758
-    second: ezgif-frame-001-removebg-preview_0
+      213: 8347304506597665199
+    second: Midas_Crouch_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ezgif-frame-001-removebg-preview_0
+      name: Midas_Crouch_0
       rect:
         serializedVersion: 2
-        x: 98
-        y: 16
-        width: 180
-        height: 291
+        x: 96
+        y: 27
+        width: 195
+        height: 188
       alignment: 9
-      pivot: {x: 0.5103021, y: 0.5015933}
+      pivot: {x: 0.50699824, y: 0.81696725}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6105e51e50ddc7020800000000000000
-      internalID: 2340988923651444758
+      spriteID: fa965cb093597d370800000000000000
+      internalID: 8347304506597665199
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: baa1b49061f9c174691b7ec152d551aa
+    spriteID: 51a09cb69a62b004c8e75d003f9abe9b
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ezgif-frame-001-removebg-preview_0: 2340988923651444758
+      Midas_Crouch_0: 8347304506597665199
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

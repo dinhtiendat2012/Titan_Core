@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idel
+  m_Name: Crouch
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 2340988923651444758, guid: 3d8a183328b577a48ab80fee5d3a73e6, type: 3}
-    - time: 0.1
-      value: {fileID: -6737114121192493797, guid: ee069759b87df224e8cb1d733fc22737, type: 3}
-    - time: 0.21666667
-      value: {fileID: 1692796781258701716, guid: 680f8b1beb16dae40ba9f84cb791b19e, type: 3}
-    - time: 0.31666666
-      value: {fileID: 7651283628843608716, guid: 6eae01736e6bf0f4c8519f20ac29fdb5, type: 3}
-    - time: 0.41666666
-      value: {fileID: 3094342433541384391, guid: 88f000a340b35844b9ae36b2cad4800a, type: 3}
+      value: {fileID: 8347304506597665199, guid: 7db573e05f6ca114da898ba916ef47b9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -52,17 +44,13 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 2340988923651444758, guid: 3d8a183328b577a48ab80fee5d3a73e6, type: 3}
-    - {fileID: -6737114121192493797, guid: ee069759b87df224e8cb1d733fc22737, type: 3}
-    - {fileID: 1692796781258701716, guid: 680f8b1beb16dae40ba9f84cb791b19e, type: 3}
-    - {fileID: 7651283628843608716, guid: 6eae01736e6bf0f4c8519f20ac29fdb5, type: 3}
-    - {fileID: 3094342433541384391, guid: 88f000a340b35844b9ae36b2cad4800a, type: 3}
+    - {fileID: 8347304506597665199, guid: 7db573e05f6ca114da898ba916ef47b9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.43333334
+    m_StopTime: 0.016666668
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

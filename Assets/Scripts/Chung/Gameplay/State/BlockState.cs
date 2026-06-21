@@ -12,12 +12,12 @@ public class BlockState : RobotState
         if (robot.isCrouching)
         {
             Debug.Log("Trạng thái: Đỡ đòn thấp (Duck Block)");
-            // Kích hoạt Anim Duck Block
+           // Kích hoạt Anim Duck Block
         }
         else
         {
             Debug.Log("Trạng thái: Đỡ đòn cao (High Block)");
-            // Kích hoạt Anim High Block
+            robot.animator.Play("Block"); // Kích hoạt Anim Block 
         }
     }
 

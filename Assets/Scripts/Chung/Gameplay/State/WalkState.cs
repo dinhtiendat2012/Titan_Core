@@ -2,6 +2,14 @@ using UnityEngine;
 
 public class WalkState : RobotState
 {
+
+    private string currentAnim;
+
+    public override void Enter()
+    {
+        UpdateWalkAnimation();
+    }
+
     public WalkState(RobotController robot) : base(robot) { }
 
     public override void LogicUpdate()
@@ -18,6 +26,21 @@ public class WalkState : RobotState
         else if (Mathf.Abs(robot.moveInput) < 0.01f)
         {
             robot.TransitionToState(robot.idleState);
+        }
+        else
+        {
+            UpdateWalkAnimation();
+        }
+    }
+
+    private void UpdateWalkAnimation()
+    {
+        string expectedAnim = robot.IsMovingForward() ? "Forward" : "Back";
+       
+        if (currentAnim != expectedAnim)
+        {
+            currentAnim = expectedAnim;
+            robot.animator?.Play(currentAnim);
         }
     }
 
