@@ -6,24 +6,25 @@ public class SceneNavigator : MonoBehaviour
     public void GoToCharacterSelect()
     {
         Debug.Log("Going to Character Select Scene");
-        SceneManager.LoadScene("Dang_CharacterSelectScene");
+        SceneManager.LoadScene("CharacterSelectScene");
     }
 
     public void GoToMapSelect()
     {
         Debug.Log("Going to Map Select Scene");
+        SceneManager.LoadScene("MapSelectScene");
     }
 
     public void GoToBattle()
     {
         Debug.Log("Going to Battle Scene");
-        SceneManager.LoadScene("Dang_BattleScene");
+        SceneManager.LoadScene("Ingame_Demo");
     }
 
     public void GoToMainMenu()
     {
         Debug.Log("Going to Main Menu Scene");
-        SceneManager.LoadScene("Dang_MainMenuScene");
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void QuitGame()

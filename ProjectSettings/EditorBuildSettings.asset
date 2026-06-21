@@ -9,14 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Dat.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Dang_MainMenuScene.unity
+    path: Assets/Scenes/MainMenuScene.unity
     guid: 5d7c15d346ca7a84cbb483069d2c3d88
   - enabled: 1
-    path: Assets/Scenes/Dang_CharacterSelectScene.unity
+    path: Assets/Scenes/CharacterSelectScene.unity
     guid: 8978da3e063fd114aa8fe521cfe074aa
-  - enabled: 1
-    path: Assets/Scenes/Dang_BattleScene.unity
+  - enabled: 0
+    path: Assets/Scenes/BattleScene.unity
     guid: 0df58e1ba53397242b2c5e568565b703
+  - enabled: 1
+    path: Assets/Scenes/MapSelectScene.unity
+    guid: f3e8c18b5a9fdb94b828fb3bbb17ac9e
+  - enabled: 1
+    path: Assets/Scenes/InGame_Demo.unity
+    guid: 3eeca0c21a3aa7e4b829d8f9eb730f44
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
