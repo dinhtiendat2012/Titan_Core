@@ -51,6 +51,8 @@ public class RobotController : MonoBehaviour
     public bool isGrounded { get; private set; }
     public bool isBlocking { get; private set; }
 
+    public int facingDirection = 1;
+
     // State Machine
     private RobotState currentState;
     public IdleState idleState { get; private set; }
@@ -59,6 +61,9 @@ public class RobotController : MonoBehaviour
     public BlockState blockState { get; private set; }
     public OverheatState overheatState { get; private set; }
     public SpecialShadowState specialShadowState { get; private set; }
+
+    [Header("Animation")]
+    public Animator animator;
 
     void Start()
     {
@@ -79,6 +84,7 @@ public class RobotController : MonoBehaviour
             currentAttackDamage = robotDataTemplate.baseDamage;
             currentEnergy = robotDataTemplate.maxEnergy;
             gameObject.name = "Robot_" + robotDataTemplate.robotName;
+            animator = GetComponentInChildren<Animator>();
         }
         else
         {
@@ -157,6 +163,14 @@ public class RobotController : MonoBehaviour
         currentState = newState;
         currentStateName = currentState.ToString(); 
         currentState.Enter();
+    }
+
+    public bool IsMovingForward()
+
+    {
+
+        return moveInput * facingDirection > 0f;
+
     }
 
     private void ManageEnergySystem()
@@ -297,17 +311,17 @@ public class RobotController : MonoBehaviour
 
         if (inputHandler.LightPunchDown)
         {
-            AttackState lightPunch = new AttackState(this, "LightPunch", 0.25f, 8f, baseDmg);
+            AttackState lightPunch = new AttackState(this, "LightPunch", 0.35f, 8f, baseDmg);
             TransitionToState(lightPunch);
         }
         else if (inputHandler.MediumPunchDown)
         {
-            AttackState mediumPunch = new AttackState(this, "MediumPunch", 0.3f, 12f, baseDmg);
+            AttackState mediumPunch = new AttackState(this, "MediumPunch", 0.40f, 12f, baseDmg);
             TransitionToState(mediumPunch);
         }
         else if (inputHandler.HeavyPunchDown)
         {
-            AttackState heavyPunch = new AttackState(this, "HeavyPunch", 0.5f, 16f, baseDmg * 1.5f);
+            AttackState heavyPunch = new AttackState(this, "HeavyPunch", 0.45f, 16f, baseDmg * 1.5f);
             TransitionToState(heavyPunch);
         }
     }

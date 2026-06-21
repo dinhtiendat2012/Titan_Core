@@ -37,7 +37,7 @@ public class AttackState : RobotState
         canCancel = false;
 
         Debug.Log($"Tung đòn: {attackAnimName} | Tốn {energyCost}% PIN");
-        // Chèn sau: robot.animator.Play(attackAnimName);
+        robot.animator?.Play(attackAnimName);
     }
 
     public override void LogicUpdate()

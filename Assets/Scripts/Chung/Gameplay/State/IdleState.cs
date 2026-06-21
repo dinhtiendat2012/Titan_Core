@@ -6,8 +6,8 @@ public class IdleState : RobotState
 
     public override void Enter()
     {
-        robot.velocity.x = 0f; 
-        // Chèn lệnh gọi Animation Idle tại đây sau này
+        robot.velocity.x = 0f;
+        robot.animator?.Play("Idle");
     }
 
     public override void LogicUpdate()
