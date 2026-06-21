@@ -6,8 +6,9 @@ public class CrouchState : RobotState
 
     public override void Enter()
     {
-        robot.velocity.x = 0f; 
+        robot.velocity.x = 0f;
         // Chèn lệnh gọi Animation Crouch tại đây sau này
+        robot.animator.Play("Crouch");
     }
 
     public override void LogicUpdate()

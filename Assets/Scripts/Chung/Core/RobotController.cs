@@ -311,17 +311,17 @@ public class RobotController : MonoBehaviour
 
         if (inputHandler.LightPunchDown)
         {
-            AttackState lightPunch = new AttackState(this, "LightPunch", 0.25f, 8f, baseDmg);
+            AttackState lightPunch = new AttackState(this, "LightPunch", 0.35f, 8f, baseDmg);
             TransitionToState(lightPunch);
         }
         else if (inputHandler.MediumPunchDown)
         {
-            AttackState mediumPunch = new AttackState(this, "MediumPunch", 0.3f, 12f, baseDmg);
+            AttackState mediumPunch = new AttackState(this, "MediumPunch", 0.40f, 12f, baseDmg);
             TransitionToState(mediumPunch);
         }
         else if (inputHandler.HeavyPunchDown)
         {
-            AttackState heavyPunch = new AttackState(this, "HeavyPunch", 0.5f, 16f, baseDmg * 1.5f);
+            AttackState heavyPunch = new AttackState(this, "HeavyPunch", 0.45f, 16f, baseDmg * 1.5f);
             TransitionToState(heavyPunch);
         }
     }
