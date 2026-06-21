@@ -33,6 +33,9 @@ public class BattleManager : MonoBehaviour
 
     private void SpawnPlayers()
     {
+        Debug.Log("P1 Index = " + CharacterSelection.SelectedCharacter1);
+        Debug.Log("P2 Index = " + CharacterSelection.SelectedCharacter2);
+
         // Lấy Prefab từ màn hình chọn nhân vật
         GameObject prefab1 = characterPrefabs[(int)CharacterSelection.SelectedCharacter1];
         GameObject prefab2 = characterPrefabs[(int)CharacterSelection.SelectedCharacter2];
@@ -64,10 +67,8 @@ public class BattleManager : MonoBehaviour
         // KẾT NỐI HỆ THỐNG: Gắn tự động Robot vào thanh máu (HUD)
         if (p1HUD != null) p1HUD.targetRobot = player1.GetComponent<RobotController>();
         player1.GetComponent<RobotController>().facingDirection = 1; // Hướng về phải
-        if(p1HUD != null) p1HUD.targetRobot = p1HUD.targetRobot; // Cập nhật lại để đảm bảo HUD nhận đúng Robot
 
         if (p2HUD != null) p2HUD.targetRobot = player2.GetComponent<RobotController>();
         player2.GetComponent<RobotController>().facingDirection = -1; // Hướng về trái
-        if(p2HUD != null) p2HUD.targetRobot = p2HUD.targetRobot; // Cập nhật lại để đảm bảo HUD nhận đúng Robot
     }
 }

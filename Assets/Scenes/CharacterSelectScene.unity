@@ -518,6 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: 7e8301d58496fa5419b0286f785c80b4, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 2
 --- !u!1 &167190634
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: a80451493a1e8354282bc87f93783696, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 5
 --- !u!114 &375068171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1264,6 +1266,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: 83c7a377300be1a4cb740f54463145ba, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 3
 --- !u!114 &545193358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,6 +1415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: 56854781f66ac9c4babba6b2d0044a6f, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 1
 --- !u!114 &701413363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2205,6 +2209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: 42d2f6ff852da954bbfb8271f56d60b8, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 0
 --- !u!114 &1421605699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,6 +2588,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: f51514707dfee4e408a5daa66863b53a, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 6
 --- !u!1 &1917043278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2637,6 +2643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robotData: {fileID: 11400000, guid: 34f7450a098d2f248a904127787d7fd9, type: 2}
   characterSelectUI: {fileID: 1380508977}
+  characterIndex: 4
 --- !u!114 &1917043281
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -931,7 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefabs:
   - {fileID: 7456372147051020869, guid: e12cde99c244d754b8f55fd0d12567f2, type: 3}
-  - {fileID: 0}
+  - {fileID: 8351191740185433010, guid: 1cc3520ffa8370942865cd2f6fb3c7f1, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
